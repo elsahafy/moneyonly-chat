@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { auth } from '../utils/api';
 
 const AuthContext = createContext();
@@ -45,9 +45,9 @@ export function AuthProvider({ children }) {
       setIsLoading(true);
       const response = await auth.login({ email, password });
       
-if (response?.data?.user && response.data.token) {
+      if (response?.token && response?.data?.user) {
         localStorage.setItem('user', JSON.stringify(response.data.user));
-localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.token);
         setUser(response.data.user);
         return true;
       }
@@ -70,9 +70,9 @@ localStorage.setItem('token', response.data.token);
       setIsLoading(true);
       const response = await auth.register(userData);
       
-if (response?.data?.user && response.data.token) {
+      if (response?.token && response?.data?.user) {
         localStorage.setItem('user', JSON.stringify(response.data.user));
-localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.token);
         setUser(response.data.user);
         return true;
       }
@@ -107,7 +107,7 @@ localStorage.setItem('token', response.data.token);
       const response = await auth.updatePreferences(preferences);
       
       // Handle nested response structure
-      const updatedUser = response?.data?.user || response?.user;
+      const updatedUser = response?.data?.user;
       
       if (!updatedUser) {
         throw new Error('Invalid response format');

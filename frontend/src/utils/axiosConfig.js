@@ -7,8 +7,7 @@ const instance = axios.create({
     'Content-Type': 'application/json',
     'Accept': 'application/json'
   },
-  timeout: 15000, // 15 second timeout
-  withCredentials: true
+  timeout: 15000 // 15 second timeout
 });
 
 // Request queue for handling 401 responses

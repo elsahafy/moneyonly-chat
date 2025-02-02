@@ -1,27 +1,12 @@
 import axios from './axiosConfig';
 
 const handleResponse = (response) => {
-  // Handle nested response structure
-  if (
-    response?.data?.status === 'success' &&
-    response.data.token &&
-    response.data.data?.user
-  ) {
-    return {
-      status: response.data.status,
-      data: {
-        user: response.data.data.user,
-        token: response.data.token
-      }
-    };
+  if (!response?.data) {
+    throw new Error('Invalid response format');
   }
-  if (response?.data) {
-    return {
-      status: 'success',
-      data: response.data
-    };
-  }
-  throw new Error('Invalid response format');
+
+  // Return the response data exactly as received from the backend
+  return response.data;
 };
 
 const handleError = (error) => {
