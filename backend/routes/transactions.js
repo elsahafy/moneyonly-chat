@@ -1,6 +1,7 @@
 const express = require('express');
 const Transaction = require('../models/Transaction');
 const { authMiddleware } = require('./auth');
+const authMiddleware = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
@@ -24,6 +25,16 @@ router.post('/', authMiddleware, async (req, res) => {
 });
 
 // Get all transactions for a user
+router.get('/', authMiddleware, async (req, res) => {
+  try {
+    const transactions = await Transaction.find({ user: req.user.id }).sort({ date: -1 });
+    res.json(transactions);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Get all transactions (Protected Route)
 router.get('/', authMiddleware, async (req, res) => {
   try {
     const transactions = await Transaction.find({ user: req.user.id }).sort({ date: -1 });
