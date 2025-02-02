@@ -1,0 +1,190 @@
+/* ===========================
+🎨 Global Theme Variables
+=========================== */
+:root {
+    /* Colors - Light Theme */
+    --primary-color: #2D9CDB;
+    --secondary-color: #1B4965;
+    --background-color: #F2F2F2;
+    --card-background: #FFFFFF;
+    --text-color: #333333;
+    --button-primary: #1B4965;
+    --button-secondary: #F2994A;
+    --success-color: #27AE60;
+    --warning-color: #F2994A;
+    --error-color: #EB5757;
+    --border-color: #E0E0E0;
+  
+    /* Typography */
+    --font-primary: 'Inter', sans-serif;
+    --font-size-base: 16px;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-semi-bold: 600;
+    --line-height: 1.5;
+  
+    /* Shadow */
+    --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  
+    /* Border Radius */
+    --border-radius: 8px;
+  
+    /* Spacing */
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+  }
+  
+  /* ===========================
+  🌙 Dark Mode Theme Variables
+  =========================== */
+  [data-theme="dark"] {
+    --background-color: #1B1B1B;
+    --card-background: #252525;
+    --text-color: #F2F2F2;
+    --button-primary: #27AE60;
+    --border-color: #444;
+  }
+  
+  /* ===========================
+  🌍 Global Styles
+  =========================== */
+  body {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: var(--line-height);
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* ===========================
+  🔘 Buttons
+  =========================== */
+  button {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semi-bold);
+    padding: var(--spacing-small) var(--spacing-medium);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button.primary {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  button.secondary {
+    background-color: var(--button-secondary);
+    color: white;
+  }
+  
+  button:hover {
+    opacity: 0.85;
+  }
+  
+  /* ===========================
+  📦 Cards
+  =========================== */
+  .card {
+    background-color: var(--card-background);
+    box-shadow: var(--box-shadow);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+  }
+  
+  /* ===========================
+  📊 Tables
+  =========================== */
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: var(--spacing-small);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  th {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  /* ===========================
+  🌙 Dark Mode Styles
+  =========================== */
+  [data-theme="dark"] table {
+    border-color: var(--border-color);
+  }
+  
+  [data-theme="dark"] th {
+    background-color: var(--secondary-color);
+  }
+  
+  /* ===========================
+  📍 Forms & Inputs
+  =========================== */
+  input, select, textarea {
+    width: 100%;
+    padding: var(--spacing-small);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-base);
+    font-family: var(--font-primary);
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+  }
+  
+  /* ===========================
+  🔲 Dark Mode Forms
+  =========================== */
+  [data-theme="dark"] input,
+  [data-theme="dark"] select,
+  [data-theme="dark"] textarea {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border-color: var(--border-color);
+  }
+  
+  /* ===========================
+  📊 Charts (Placeholder)
+  =========================== */
+  .chart-container {
+    background-color: var(--card-background);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+  
+  /* ===========================
+  ⚙️ Responsive Design
+  =========================== */
+  @media (max-width: 768px) {
+    :root {
+      --font-size-base: 14px;
+    }
+  
+    button {
+      padding: var(--spacing-small);
+    }
+  
+    .card {
+      padding: var(--spacing-small);
+    }
+  }
